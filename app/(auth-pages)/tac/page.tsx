@@ -50,8 +50,8 @@ Se cierra o suspende su cuenta por incumplimiento de las condiciones de uso.<br/
 9. Información de Contacto
 <br/>
 Si tiene alguna pregunta o inquietud sobre nuestra política de privacidad, no dude en ponerse en contacto con nosotros enviando un correo electrónico a ganadoroperaciones@gmail.com
-
-9. CAMBIOS EN ESTA POLÍTICA 
+<br/>
+10. CAMBIOS EN ESTA POLÍTICA 
 <br/>
 Nos reservamos el derecho de actualizar esta política de privacidad. Le notificaremos sobre cualquier cambio a través del sitio web, redes sociales o mediante correo electrónico.
 </p>     

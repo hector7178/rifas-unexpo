@@ -6,7 +6,7 @@ import { encodedRedirect } from '@/utils/utils';
 import jwt from 'jsonwebtoken';
 
 export async function POST( request:NextRequest) {
-
+const bucketName = process.env.bucket_supabase || "rifas-cap-unexpo";
 try {
     
 const formData = await request.formData();
@@ -22,43 +22,35 @@ if(!(Number(formData.get("number"))>=settings[0].ntickets)){
     if(!formData.get("transfer")){
       return NextResponse.json({msj:"Error numero de transferencia"},{status:500})
     }
-    // if(!formData.get("file")){
-    //  return NextResponse.json({msj:"Error archivos"},{status:500})
-    // }
+    if(!formData.get("file")){
+     return NextResponse.json({msj:"Error archivos"},{status:500})
+    }
     if(!formData.get("terms")){
       return NextResponse.json({msj:"Error Aceptar terminos"},{status:500})
     }
-   
-    const url = 'https://upload.imagekit.io/api/v2/files/upload';
-    const form = new FormData();
-    form.append('file', formData.get("file")!);
-    const filename= `capture${Math.round(Math.random()*1000000)}.jpg`;
-  
-  
-    const token = jwt.sign({
-      fileName: filename
-    }, process.env.PRIVATE_KEY!, {
-      expiresIn: 600,
-      header: {
-        alg: "HS256",
-        typ: "JWT",
-        kid: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
-      },
-    });
-    form.append("fileName", filename);
-    form.append('token', token);
-    const options = {
-      body:form,
-      method: 'POST',
-      headers: {Accept: 'application/json', Authorization: `Bearer ${process.env.PRIVATE_KEY}`}
-    };
-  
-     
-      const response = await fetch(url, options);
-      const data = await response.json();
-      if (!data) return NextResponse.json({msj:"Error servidor"},{status:500});
-    
-      return NextResponse.json({msj:"Exito, seguir con el registro", img:data.url},{status:200})
+   const file= formData.get("file") as File;
+   console.log('Archivo recibido:', file);
+
+   const trans= formData.get("transfer") as string;
+
+   const filePath= `rifas-capture-${trans}.${file.type.split('/')[1]}`;
+    const { data, error:errorcap } = await supabase
+      .storage
+      .from(bucketName)
+      .upload(filePath, file)
+
+    if (errorcap)  return NextResponse.json({msj:errorcap?.message},{status:500})
+
+    console.log('Imagen subida:', data)
+
+    // 4. Obtiene URL pública (requiere configurar políticas de acceso)
+    const { data:datares} = supabase
+      .storage
+      .from(bucketName)
+      .getPublicUrl(filePath )
+
+    console.log('URL pública:', datares)
+      return NextResponse.json({msj:"Exito, seguir con el registro", img:datares},{status:200})
     
 } catch (error) {
     return NextResponse.json({msj:"Error servidor"},{status:500});

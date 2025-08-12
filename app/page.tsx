@@ -20,8 +20,7 @@ import redes from "./public/redes.png"
 import tickets from "./public/tickets.png"
 import bolsa from "./public/bolsa.png"
 import { Play } from "lucide-react";
-import Timer from "../components/Timer";
-import { createClient } from "@/utils/supabase/server";
+import adorno from "./public/adorno.svg"
 
 
 
@@ -35,16 +34,17 @@ export default async function Home() {
       <nav className="w-full bg-background flex justify-center border-b border-b-foreground/10 h-18 relative  shadow-xl"  style={{"boxShadow": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"}}>
             <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
               <div className="flex gap-5 items-center font-semibold">
-                <Link href={"/"} className="text-primary font-bold text-lg md:text-2xl">RIFASVILLA</Link>
+                <Link href={"/"} className="text-primary font-bold text-lg md:text-2xl">UNEXPO RIFA</Link>
             </div>
             {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
           </div>
       </nav>
-      <main className="flex flex-col w-full items-center w-full">
+      <main className="flex flex-col w-full items-center w-full relative h-fit">
+        <Image src={adorno} alt="adorno" width={200} height={400} className="z-0 w-[40vw] h-[80vh] absolute top-[110vh] -left-[20vw] opacity-30 "/>
         <Hero />
         <section className="flex-1 flex w-full h-fit items-center justify-center flex-col gap-8  md:p-10">
-          <div className="w-full h-fit mt-[12vh] flex flex-col gap-6 items-center">
-            <h2 className="w-fit h-fit text-3xl font-bold text-primary text-center">GANA ALGUNO DE LOS SIGUIENTES 7 PREMIOS </h2>
+          <div className="w-full h-fit mt-[12vh] flex flex-col gap-6 items-center relative z-10">
+            <h2 className="w-fit h-fit text-3xl font-bold text-foreground text-center">GANA ALGUNO DE LOS SIGUIENTES 7 PREMIOS </h2>
           
             <Card className="w-[90%] md:w-[600px]">
               <CardHeader>
@@ -178,9 +178,9 @@ export default async function Home() {
           <h3 className="text-primary text-3xl font-bold text-center">CONTACTANOS EN NUESTRAS REDES SOCIALES</h3>
           <Redes/>
           </div>
-          <Link href={"https://api.whatsapp.com/send?phone=584244431231&text=Hola, quiero obtener mas información de la gran rifa"} target={"_blank"} className="fixed bottom-4 right-4 md:right-2 md:bottom-2 md:w-[120px] md:h-[120px] h-20 w-20 z-20  ">
+          <Link href={"https://api.whatsapp.com/send?phone=584128220099&text=Hola, quiero obtener mas información de la gran rifa"} target={"_blank"} className="fixed bottom-4 right-4 md:right-2 md:bottom-2 md:w-[120px] md:h-[120px] h-20 w-20 z-20  ">
 
-                  <Wsp className="w-full  h-full hover:scale-105 cursor-pointer " style={{filter:"drop-shadow(0 10px 15px black)"}}/>
+                  <Wsp className="w-full  h-full hover:scale-105 cursor-pointer transition-all duration-600 " style={{filter:"drop-shadow(0 10px 15px black)"}}/>
           </Link>
         </section>
       </main>
