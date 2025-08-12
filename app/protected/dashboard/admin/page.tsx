@@ -58,7 +58,7 @@ async function Page() {
         </Card>
         </div>
         <div className='flex flex-col  gap-4 w-full rounded-lg items-center justify-center p-4'>
-        <div className='relative flex items-center justify-center w-full'>
+        <div className='relative flex flex-col md:flex-row gap-2 items-center justify-between  w-full'>
           <h2 className='text-2xl font-bold text-foreground relative'>Historial de pagos</h2> 
           <Link href={"/protected/dashboard/admin/pagos?page=0"} className='absolute right-0 md:right-10 p-2 w-fit h-fit rounded-lg text-md bg-primary text-white font-bold'>Ver Todos</Link>
         </div>
