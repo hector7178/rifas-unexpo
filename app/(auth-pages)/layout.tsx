@@ -24,7 +24,7 @@ export default async function Layout({
       <nav className="w-full bg-background flex justify-center border-b border-b-foreground/10 h-18 relative  shadow-xl"  style={{"boxShadow": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"}}>
             <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
               <div className="flex gap-5 items-center font-semibold">
-                <Link href={"/"} className="text-primary font-bold text-lg md:text-2xl">RIFASVILLA</Link>
+               <Link href={"/"} className="text-primary font-bold text-lg md:text-2xl">UNEXPO RIFA</Link>
             </div>
             {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
           </div>

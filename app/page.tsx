@@ -1,11 +1,9 @@
 import Hero from "@/components/hero";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { Button } from "../components/ui/button";
-import { SubmitButton } from "../components/submit-button";
 import Link from "next/link";
 import Wsp from "../components/Wsp";
 import Redes from "../components/Redes";
-import CarouselInfinite from "../components/Carousel";
 import { EnvVarWarning } from "../components/env-var-warning";
 import HeaderAuth from "../components/header-auth";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
@@ -23,12 +21,8 @@ import { Play } from "lucide-react";
 import adorno from "./public/adorno.svg"
 
 
-
 export default async function Home() {
   
-        
-  
-      
   return (
     <>
       <nav className="w-full bg-background flex justify-center border-b border-b-foreground/10 h-18 relative  shadow-xl"  style={{"boxShadow": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)"}}>
@@ -74,7 +68,7 @@ export default async function Home() {
                               <div className="flex flex-col items-center justify-center gap-4 rounded-lg  min-w-[250px] min-h-[250px] md:min-w-[300px] md:min-h-[300px] shadow-xl border-gray-100/40 p-4">
                                 <span className="animate-pulse text-4xl font-bold text-foreground text-center">{item?.premio}</span>
                                 <div key={index} className='relative w-[200px] h-[200px]  '>
-                                {item?.img && <Image alt='moto primer premio' width={300} height={300} src={item.img} className='w-full h-full'/>}
+                                {item?.img && <Image alt='moto primer premio' width={300} height={300} src={item?.img} className='w-full h-full'/>}
                                 </div>
                               </div>
                             </CardContent>
