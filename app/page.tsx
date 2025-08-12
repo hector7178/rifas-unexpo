@@ -39,8 +39,10 @@ export default async function Home() {
             {!hasEnvVars ? <EnvVarWarning /> : <HeaderAuth />}
           </div>
       </nav>
-      <main className="flex flex-col w-full items-center w-full relative h-fit">
+      <main className="flex flex-col w-full items-center w-full relative h-fit overflow-hidden">
         <Image src={adorno} alt="adorno" width={200} height={400} className="z-0 w-[40vw] h-[80vh] absolute top-[110vh] -left-[20vw] opacity-30 "/>
+         <Image src={adorno} alt="adorno" width={200} height={400} className="z-0 w-[40vw] h-[80vh] absolute top-[210vh] -right-[20vw] opacity-30 rotate-180 "/>
+       
         <Hero />
         <section className="flex-1 flex w-full h-fit items-center justify-center flex-col gap-8  md:p-10">
           <div className="w-full h-fit mt-[12vh] flex flex-col gap-6 items-center relative z-10">
@@ -105,7 +107,7 @@ export default async function Home() {
 
           
           <div className="flex flex-col gap-4  mt-16 w-full h-fit items-center justify-center relative ">
-             <h2 className="w-fit h-fit text-3xl font-bold text-primary text-center">DETALLES DEL PRIMER PREMIO</h2>
+             <h2 className="w-fit h-fit text-3xl font-bold text-foregorund text-center">DETALLES DEL PRIMER PREMIO</h2>
              <Card className="w-[90%] md:w-[600px]">
               <CardHeader>
                 <CardTitle className="flex flex-col gap-2">PRIMER PREMIO <span className="animate-pulse text-3xl">MOTO RK200</span></CardTitle>
